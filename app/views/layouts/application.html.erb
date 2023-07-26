@@ -7,13 +7,10 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
-     <%= link_to 'home', root_path %>
-     <%= link_to 'about', about_path %>
-     <%= link_to 'new course', courses_new_path %>
     <%= yield %>
   </body>
 </html>

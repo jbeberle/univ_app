@@ -92,15 +92,14 @@ GEM
       activesupport (>= 5.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    importmap-rails (1.2.1)
-      actionpack (>= 6.0.0)
-      railties (>= 6.0.0)
     io-console (0.6.0)
     irb (1.7.4)
       reline (>= 0.3.6)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jsbundling-rails (1.1.2)
+      railties (>= 6.0.0)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -214,8 +213,8 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
-  importmap-rails
   jbuilder
+  jsbundling-rails
   puma (~> 5.0)
   rails (~> 7.0.6)
   selenium-webdriver
