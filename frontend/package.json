@@ -17,6 +17,7 @@
     "axios": "^1.4.0",
     "keycloak-connect": "^22.0.1",
     "lodash": "^4.17.21",
+    "material-ui-popup-state": "^5.0.9",
     "print-dom": "^1.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
