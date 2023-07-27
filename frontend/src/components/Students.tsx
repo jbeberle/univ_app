@@ -1,16 +1,16 @@
 import {Button, Card, CardActions, CardContent, Container, Grid, Typography} from '@mui/material';
 import React, {useEffect, useState} from 'react';
-import {Course, getCourseData} from '../client/httpClient';
+import {Course, getCourseData, getStudentData, Student} from '../client/httpClient';
 
 
 type Props = {};
-const Courses = (props: Props) => {
-    const [courses, setCourses]: any[] = useState([]);
+const Students = (props: Props) => {
+    const [students, setStudents]: any[] = useState([]);
     useEffect(() => {
         let mounted = true;
-        getCourseData("courses").then((items) => {
+        getStudentData("students").then((items) => {
             if (mounted) {
-                setCourses(items);
+                setStudents(items);
             }
         });
 
@@ -31,27 +31,29 @@ const Courses = (props: Props) => {
                       justifyContent="center">
                     <Grid item xs={12}>
                         <Typography variant="h3">
-                            Course Listings
+                            Students
                         </Typography>
                     </Grid>
                     <Grid container sx={{placeItems: 'center'}}
                           spacing={1}
                           alignItems="center"
                     >
-                        {courses.map((course: Course, index: number) =>
+                        {students.map((student: Student, index: number) =>
                             <Grid item xs={6}>
                                 <Card sx={{minWidth: 275, background: 'gray', color: 'white'}}>
                                     <CardContent>
                                         <Typography variant="h5" component="div">
-                                            {course.short_name}: {course.name}
+                                            Name: {student.name}
+                                        </Typography>
+                                        <Typography variant="body2" component="div">
+                                            Email:  {student.email}
                                         </Typography>
                                         <Typography variant="body2">
-                                            {course.description}
+                                            Course Enrollments
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <Button size="small" color="inherit">Enroll</Button>
-                                        <Button size="small" color={"inherit"}>Info</Button>
+                                        <Button size="small" color="inherit">View Profile</Button>
                                     </CardActions>
                                 </Card>
                             </Grid>
@@ -63,4 +65,4 @@ const Courses = (props: Props) => {
     );
 };
 
-export default Courses;
+export default Students;

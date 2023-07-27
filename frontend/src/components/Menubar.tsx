@@ -79,7 +79,7 @@ const Menubar2 = (props:Props) => {
                     </Button>
                     <Menu {...bindMenu(popupState)}>
                         {children.map((child, index) =>
-                             <MenuItem onClick={popupState.close}>{child}</MenuItem>
+                             <MenuItem key={index} onClick={popupState.close}>{child}</MenuItem>
                         )}
                     </Menu>
                 </React.Fragment>
