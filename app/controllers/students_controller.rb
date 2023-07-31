@@ -16,11 +16,14 @@ class StudentsController < ApplicationController
   # POST /students
   def create
     @student = Student.new(student_params)
+    p student_params
 
     if @student.save
       render json: @student, status: :created, location: @student
+      # redirect_to root_path
     else
-      render json: @student.errors, status: :unprocessable_entity
+      p @student.errors
+      render json: @student.errors, error: "This is an error", status: :unprocessable_entity
     end
   end
 
@@ -46,6 +49,7 @@ class StudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_params
+      print params
       params.require(:student).permit(:name, :email)
     end
 end

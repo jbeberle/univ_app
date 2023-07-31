@@ -1,6 +1,7 @@
 import {Button, Card, Container, FormControl, FormLabel, Grid, TextField, Typography } from '@mui/material';
 import React from 'react';
 import {useForm} from "react-hook-form";
+import { postStudentData } from '../client/httpClient';
 
 type Props = {
     name: string,
@@ -9,6 +10,7 @@ type Props = {
 
 const onSubmit = (e: any) => {
     alert(`Subbmited: ${e.name} ${e.email}`);
+    postStudentData("students", {name: e.name, email: e.email});
 }
 const NewCourse = () => {
     const {
@@ -19,7 +21,7 @@ const NewCourse = () => {
 
     return (
         <>
-            <br/><br/><br/><br/><br/>
+            {/*<br/><br/><br/><br/><br/>*/}
             <Container sx={{paddingLeft: "inherit", paddingTop: "30px"}}>
                 <Card>
                     <Grid container sx={{placeItems: 'center'}}
@@ -43,12 +45,14 @@ const NewCourse = () => {
                     onSubmit={handleSubmit((data) => onSubmit(data))}>
                <FormControl>
                     <FormLabel>Name</FormLabel>
-                   <TextField error={Boolean(errors.name)}
-                              type="password"
+                   <TextField placeholder={"Enter Full Name"}
+                              error={Boolean(errors.name)}
+                              type="name"
                               helperText={Boolean(errors.name) ? <Typography>Name should be at least 5 and less than 50 chars</Typography> : null}
                               {...register("name", {minLength: 5, maxLength : 50, required: true})}/>
                    <FormLabel>Email</FormLabel>
-                   <TextField error={Boolean(errors.email)}
+                   <TextField placeholder={"Enter a valid email address"}
+                              error={Boolean(errors.email)}
                               helperText={Boolean(errors.email) ? <Typography>Invalid Email</Typography> : null}
                               {...register("email", {
                                   validate: (val: any) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val)
